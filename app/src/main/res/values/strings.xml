@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Homework_1</string>
+    <string name="secret_key">Get secret key</string>
 </resources>
