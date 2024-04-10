@@ -65,4 +65,22 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         unregisterReceiver(customBroadcastReceiver)
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("message", customBroadcastReceiver.message)
+        outState.putString("secretKey", secretKey)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val surfMessage = savedInstanceState.getString("message")
+        val secretKey = savedInstanceState.getString("secretKey")
+
+        customBroadcastReceiver.message = surfMessage
+        this.secretKey = secretKey
+
+        Log.d("MyLog", surfMessage.toString())
+        Log.d("MyLog", secretKey.toString())
+    }
 }
